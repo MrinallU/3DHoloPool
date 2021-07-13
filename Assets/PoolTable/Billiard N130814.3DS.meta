@@ -1,0 +1,557 @@
+fileFormatVersion: 2
+guid: 8568827f71b33fb459fc6161179bb23f
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: bola-01 ww
+  - first:
+      1: 100004
+    second: bola-02 ww
+  - first:
+      1: 100006
+    second: bola-03 ww
+  - first:
+      1: 100008
+    second: bola-04 ww
+  - first:
+      1: 100010
+    second: bola-05 ww
+  - first:
+      1: 100012
+    second: bola-06 ww
+  - first:
+      1: 100014
+    second: bola-07 ww
+  - first:
+      1: 100016
+    second: bola-08 ww
+  - first:
+      1: 100018
+    second: bola-09 ww
+  - first:
+      1: 100020
+    second: bola-10 ww
+  - first:
+      1: 100022
+    second: bola-11 ww
+  - first:
+      1: 100024
+    second: bola-12 ww
+  - first:
+      1: 100026
+    second: bola-13 ww
+  - first:
+      1: 100028
+    second: bola-14 ww
+  - first:
+      1: 100030
+    second: bola-15 ww
+  - first:
+      1: 100032
+    second: bola-branc
+  - first:
+      1: 100034
+    second: Box07 www.
+  - first:
+      1: 100036
+    second: mesa bilha
+  - first:
+      1: 100038
+    second: taco bilh0
+  - first:
+      1: 100040
+    second: taco bilh1
+  - first:
+      1: 100042
+    second: taco bilh2
+  - first:
+      1: 100044
+    second: taco bilha
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: bola-01 ww
+  - first:
+      4: 400004
+    second: bola-02 ww
+  - first:
+      4: 400006
+    second: bola-03 ww
+  - first:
+      4: 400008
+    second: bola-04 ww
+  - first:
+      4: 400010
+    second: bola-05 ww
+  - first:
+      4: 400012
+    second: bola-06 ww
+  - first:
+      4: 400014
+    second: bola-07 ww
+  - first:
+      4: 400016
+    second: bola-08 ww
+  - first:
+      4: 400018
+    second: bola-09 ww
+  - first:
+      4: 400020
+    second: bola-10 ww
+  - first:
+      4: 400022
+    second: bola-11 ww
+  - first:
+      4: 400024
+    second: bola-12 ww
+  - first:
+      4: 400026
+    second: bola-13 ww
+  - first:
+      4: 400028
+    second: bola-14 ww
+  - first:
+      4: 400030
+    second: bola-15 ww
+  - first:
+      4: 400032
+    second: bola-branc
+  - first:
+      4: 400034
+    second: Box07 www.
+  - first:
+      4: 400036
+    second: mesa bilha
+  - first:
+      4: 400038
+    second: taco bilh0
+  - first:
+      4: 400040
+    second: taco bilh1
+  - first:
+      4: 400042
+    second: taco bilh2
+  - first:
+      4: 400044
+    second: taco bilha
+  - first:
+      23: 2300000
+    second: bola-01 ww
+  - first:
+      23: 2300002
+    second: bola-02 ww
+  - first:
+      23: 2300004
+    second: bola-03 ww
+  - first:
+      23: 2300006
+    second: bola-04 ww
+  - first:
+      23: 2300008
+    second: bola-05 ww
+  - first:
+      23: 2300010
+    second: bola-06 ww
+  - first:
+      23: 2300012
+    second: bola-07 ww
+  - first:
+      23: 2300014
+    second: bola-08 ww
+  - first:
+      23: 2300016
+    second: bola-09 ww
+  - first:
+      23: 2300018
+    second: bola-10 ww
+  - first:
+      23: 2300020
+    second: bola-11 ww
+  - first:
+      23: 2300022
+    second: bola-12 ww
+  - first:
+      23: 2300024
+    second: bola-13 ww
+  - first:
+      23: 2300026
+    second: bola-14 ww
+  - first:
+      23: 2300028
+    second: bola-15 ww
+  - first:
+      23: 2300030
+    second: bola-branc
+  - first:
+      23: 2300032
+    second: Box07 www.
+  - first:
+      23: 2300034
+    second: mesa bilha
+  - first:
+      23: 2300036
+    second: taco bilh0
+  - first:
+      23: 2300038
+    second: taco bilh1
+  - first:
+      23: 2300040
+    second: taco bilh2
+  - first:
+      23: 2300042
+    second: taco bilha
+  - first:
+      33: 3300000
+    second: bola-01 ww
+  - first:
+      33: 3300002
+    second: bola-02 ww
+  - first:
+      33: 3300004
+    second: bola-03 ww
+  - first:
+      33: 3300006
+    second: bola-04 ww
+  - first:
+      33: 3300008
+    second: bola-05 ww
+  - first:
+      33: 3300010
+    second: bola-06 ww
+  - first:
+      33: 3300012
+    second: bola-07 ww
+  - first:
+      33: 3300014
+    second: bola-08 ww
+  - first:
+      33: 3300016
+    second: bola-09 ww
+  - first:
+      33: 3300018
+    second: bola-10 ww
+  - first:
+      33: 3300020
+    second: bola-11 ww
+  - first:
+      33: 3300022
+    second: bola-12 ww
+  - first:
+      33: 3300024
+    second: bola-13 ww
+  - first:
+      33: 3300026
+    second: bola-14 ww
+  - first:
+      33: 3300028
+    second: bola-15 ww
+  - first:
+      33: 3300030
+    second: bola-branc
+  - first:
+      33: 3300032
+    second: Box07 www.
+  - first:
+      33: 3300034
+    second: mesa bilha
+  - first:
+      33: 3300036
+    second: taco bilh0
+  - first:
+      33: 3300038
+    second: taco bilh1
+  - first:
+      33: 3300040
+    second: taco bilh2
+  - first:
+      33: 3300042
+    second: taco bilha
+  - first:
+      43: 4300000
+    second: mesa bilha
+  - first:
+      43: 4300002
+    second: Box07 www.
+  - first:
+      43: 4300004
+    second: bola-01 ww
+  - first:
+      43: 4300006
+    second: bola-02 ww
+  - first:
+      43: 4300008
+    second: bola-03 ww
+  - first:
+      43: 4300010
+    second: bola-04 ww
+  - first:
+      43: 4300012
+    second: bola-05 ww
+  - first:
+      43: 4300014
+    second: bola-06 ww
+  - first:
+      43: 4300016
+    second: bola-07 ww
+  - first:
+      43: 4300018
+    second: bola-08 ww
+  - first:
+      43: 4300020
+    second: bola-09 ww
+  - first:
+      43: 4300022
+    second: bola-10 ww
+  - first:
+      43: 4300024
+    second: bola-branc
+  - first:
+      43: 4300026
+    second: bola-11 ww
+  - first:
+      43: 4300028
+    second: bola-12 ww
+  - first:
+      43: 4300030
+    second: bola-13 ww
+  - first:
+      43: 4300032
+    second: bola-14 ww
+  - first:
+      43: 4300034
+    second: bola-15 ww
+  - first:
+      43: 4300036
+    second: taco bilha
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bilhar cromo www
+    second: {fileID: 2100000, guid: 7ee67d495c6566941bdf29f0daa7a3e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bilhar veludo ww
+    second: {fileID: 2100000, guid: 7118da65f44e4fd428f74d0929881ebd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-01 www.3d1_
+    second: {fileID: 2100000, guid: aa3eb99c99431fa4b81a2f9f72553981, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-02 www.3d1_
+    second: {fileID: 2100000, guid: c02a5487a9ba4d34fa33e54dd8568aa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-03 www.3d1_
+    second: {fileID: 2100000, guid: e57ede382b1b2d142a05b0e59ddb590a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-04 www.3d1_
+    second: {fileID: 2100000, guid: b6523f63aed323e4d8ec237d2454812f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-05 www.3d1_
+    second: {fileID: 2100000, guid: 2aa7d8a609bc1f944b75b97cf20b3612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-06 www.3d1_
+    second: {fileID: 2100000, guid: 30ace5dfe39cd2743a3dfeee316b158d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-07 www.3d1_
+    second: {fileID: 2100000, guid: df1200536bae54440bd79ffc59dd4115, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-08 www.3d1_
+    second: {fileID: 2100000, guid: 498cfb001a52db24ca14ee6c2a279ce4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-09 www.3d1_
+    second: {fileID: 2100000, guid: 3c1e4de7bac9da8428d883a0accd94a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-10 www.3d1_
+    second: {fileID: 2100000, guid: 58c0fef65a96c9a479c41a6f49ad5865, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-11 www.3d1_
+    second: {fileID: 2100000, guid: 51fd93117edeaa74f9cd19e7c6efed60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-12 www.3d1_
+    second: {fileID: 2100000, guid: ee1aec1bce6b87a43809d52dd40b714d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-13 www.3d1_
+    second: {fileID: 2100000, guid: 10c4feedc6a96d84faaa854cb8442c3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-14 www.3d1_
+    second: {fileID: 2100000, guid: f43a9baed19abbe41b5c8345ccfd02bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-15 www.3d1_
+    second: {fileID: 2100000, guid: 6ddc10b69101ccf438ac4e3fc325447e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bola-branca www_
+    second: {fileID: 2100000, guid: 0da1ba9f302224a468ec0ed298aca957, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chrome go
+    second: {fileID: 2100000, guid: 3252c58ee48321c42821c7ac609af649, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glossy green
+    second: {fileID: 2100000, guid: ef2a8d23120fd2942b1b9cf0689f371e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mesa bilhar  met
+    second: {fileID: 2100000, guid: 1598aba2ef9c87342bc5e1e8b319b862, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: taco bilhar made
+    second: {fileID: 2100000, guid: 59ab8060020b77745bfa50f12203db41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: w  birch
+    second: {fileID: 2100000, guid: 2817934c389bbce4a8096b51b6ce5227, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: w  birch1
+    second: {fileID: 2100000, guid: b7653f5d77c30c94a920cea70add816f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: w  oreh-itali1
+    second: {fileID: 2100000, guid: b940885850bd82f4bbe463ca963db3df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: w  oreh-itali2
+    second: {fileID: 2100000, guid: a7e273d015d53334cac4c521a4a4e73c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: w  oreh-italians
+    second: {fileID: 2100000, guid: 55cdced1aa22bfd40abb5f6a1ac60101, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
