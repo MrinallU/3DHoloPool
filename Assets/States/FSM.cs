@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ThreeDPool.States
 {
-    public class FSM :  MonoBehaviour
+    public class FSM : MonoBehaviour
     {
         private List<IState> _states;
 
@@ -12,7 +12,7 @@ namespace ThreeDPool.States
         public void AddState(IState state)
         {
             // only add if this state is not 
-            if(_states.Find(s => s.GetType() == state.GetType()) != null)
+            if (_states.Find(s => s.GetType() == state.GetType()) != null)
                 _states.Add(state);
         }
 
@@ -23,15 +23,15 @@ namespace ThreeDPool.States
                 return;
 
             // exit from the current state if there is any
-            if(_currentState != null)
+            if (_currentState != null)
                 _currentState.OnExit();
-            
+
             // enter the new state 
-            if(newState != null)
+            if (newState != null)
             {
                 _currentState = newState;
                 _currentState.OnEnter();
-            }          
+            }
         }
 
         public void Update()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class GlobalSettings : object
-{    
+{
     public static bool isSelecting = false;
     public static bool isAbout = false;
     public static bool isPause = false;
@@ -24,8 +24,8 @@ public static class GlobalSettings : object
 
     public static void DebugText(string txt)
     {
-            TextMesh textObject = GameObject.Find("descStart").GetComponent<TextMesh>();
-            textObject.text = txt;
+        TextMesh textObject = GameObject.Find("descStart").GetComponent<TextMesh>();
+        textObject.text = txt;
     }
     public static void SetCursorVisible(bool setting)
     {
@@ -39,7 +39,7 @@ public static class GlobalSettings : object
             }
 
         }
-    } 
+    }
 }
 
 

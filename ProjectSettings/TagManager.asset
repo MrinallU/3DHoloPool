@@ -21,6 +21,10 @@ TagManager:
   - floor
   - infopanel
   - instructions
+  - gamepiece
+  - gamemenu
+  - cue
+  - buttoncontroller
   layers:
   - Default
   - TransparentFX
