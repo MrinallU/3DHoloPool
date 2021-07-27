@@ -36972,18 +36972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bae6123295c2de4391742b77b81f957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &441999258977705624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555068242705142674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16fb76dc4523fc243b0af6a96923294d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &442102159183670226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37028,7 +37016,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554756545978347736}
   m_Material: {fileID: 13400000, guid: 82451f8c62cb5f149934077b4b23a42b, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -37079,8 +37067,8 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554902455420356882}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 82451f8c62cb5f149934077b4b23a42b, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -37189,7 +37177,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!222 &547965600565696586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37206,7 +37194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554902455420356882}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -56.5, y: -4, z: 3.1}
+  m_LocalPosition: {x: -28.9, y: -4.79, z: -26.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551505164088777494}
@@ -37275,14 +37263,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555075354785373378}
-  m_LocalRotation: {x: 0.020128816, y: -0, z: -0, w: 0.99979746}
+  m_LocalRotation: {x: 0.020131014, y: 0, z: 0, w: 0.99979734}
   m_LocalPosition: {x: 27.876497, y: 40.405273, z: -41.538063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 551209289631806932}
   m_Father: {fileID: 1378327616}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 2.3070002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.307, y: 0, z: 0}
 --- !u!4 &551525731670242918
 Transform:
   m_ObjectHideFlags: 0
@@ -37291,7 +37279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554756545978347736}
   m_LocalRotation: {x: -0.18181668, y: -0.07116979, z: 0.01303897, w: -0.98066694}
-  m_LocalPosition: {x: -1.1, y: 35.3, z: -13.200006}
+  m_LocalPosition: {x: -1.1, y: 34.14, z: -13.200006}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1378327616}
@@ -37541,6 +37529,7 @@ GameObject:
   - component: {fileID: 537389411695390546}
   - component: {fileID: 554756545978347738}
   - component: {fileID: 554756545978347737}
+  - component: {fileID: 554756545978347739}
   m_Layer: 0
   m_Name: CueBall
   m_TagString: Untagged
@@ -37556,11 +37545,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554756545978347736}
   m_Material: {fileID: 13400000, guid: 82451f8c62cb5f149934077b4b23a42b, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: -0.0000038146973, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &554756545978347738
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37657,6 +37646,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &554756545978347739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554756545978347736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a090e55453211c45b51d282cc069352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &554772167692412186
 GameObject:
   m_ObjectHideFlags: 0
@@ -37693,6 +37694,7 @@ GameObject:
   - component: {fileID: 554902455420356886}
   - component: {fileID: 554902455420356887}
   - component: {fileID: 554902455420356889}
+  - component: {fileID: 554902455420356891}
   - component: {fileID: 554902455420356888}
   - component: {fileID: 554902455420356890}
   m_Layer: 0
@@ -37776,6 +37778,7 @@ MonoBehaviour:
   - {fileID: 554902455420356886}
   - {fileID: 554902455420356887}
   - {fileID: 554902455420356889}
+  - {fileID: 554902455420356891}
 --- !u!114 &554902455420356886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37790,8 +37793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handType: 3
   proximityType: 3
-  constraintOnRotation: 5
-  useLocalSpaceForConstraint: 0
+  constraintOnRotation: 3
+  useLocalSpaceForConstraint: 1
 --- !u!114 &554902455420356887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37806,8 +37809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handType: 3
   proximityType: 3
-  constraintOnMovement: 2
-  useLocalSpaceForConstraint: 0
+  constraintOnMovement: 4
+  useLocalSpaceForConstraint: 1
 --- !u!114 &554902455420356888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37820,8 +37823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3965f281103d0b49b77631d0285acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPos: {x: 0, y: 0, z: 0}
-  threshold: 1
 --- !u!114 &554902455420356889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37836,8 +37837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handType: 3
   proximityType: 3
-  constraintOnMovement: 3
-  useLocalSpaceForConstraint: 0
+  constraintOnMovement: 5
+  useLocalSpaceForConstraint: 1
 --- !u!54 &554902455420356890
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37853,7 +37854,21 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
+--- !u!114 &554902455420356891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554902455420356882}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac28f8bfe57b7f4182539cec9c0b40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: 3
+  proximityType: 3
 --- !u!1 &555068242705142674
 GameObject:
   m_ObjectHideFlags: 0
@@ -37866,7 +37881,6 @@ GameObject:
   - component: {fileID: 558481242101217426}
   - component: {fileID: 527406375144326346}
   - component: {fileID: 568483840975239406}
-  - component: {fileID: 441999258977705624}
   m_Layer: 0
   m_Name: PocketsCollider
   m_TagString: Untagged
@@ -39295,14 +39309,26 @@ GameObject:
   - component: {fileID: 8398415394873325464}
   - component: {fileID: 3851384642700114816}
   - component: {fileID: 5130953527057507766}
-  - component: {fileID: 7342687296685550658}
+  - component: {fileID: 2177617101824805842}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: triangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2177617101824805842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177617101824805841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760ddb55cedfed54f902079db130a790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2181539491857032656
 GameObject:
   m_ObjectHideFlags: 0
@@ -48579,18 +48605,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7342687296685550658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2177617101824805841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6bdc560925142c468b1c9b9ef7fc0f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7439519154106043439
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class ButtonController : MonoBehaviour
 
     // Private Variables
     private GameObject cue;
+    private GameObject triangle;
     private GameObject poolTable;
     private GameObject gamePieceHolder;
     private GameObject instructions;
@@ -24,6 +25,7 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         cue = GameObject.FindWithTag("cue");
+        triangle = GameObject.FindWithTag("triangle");
         poolTable = GameObject.FindWithTag("table");
         gamePieceHolder = GameObject.FindWithTag("gamepiece");
         instructions = GameObject.FindWithTag("instructions");
@@ -46,11 +48,24 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
     }
 
+    public void AboutPressed()
+    {
+        Application.OpenURL("https://3dhologroup.com/");
+    }
+
+    public void ExitPressed()
+    {
+        Debug.Log("ExitPressed");
+        Application.Quit();
+    }
+
     public void BreakAndShootPressed()
     {
 
         breakAndShootBool = !breakAndShootBool;
+        triangle.GetComponent<Triangle>().RemoveTriangle();
         cue.GetComponent<MoveAxisConstraintShootMode>().enabled = breakAndShootBool;
+        //cue.GetComponent<FixedRotationToUserConstraint>().enabled = breakAndShootBool;
         cue.GetComponent<MoveAxisConstraint>().enabled = !breakAndShootBool;
         cue.GetComponent<CueController>().HandleShooting(breakAndShootBool);
     }

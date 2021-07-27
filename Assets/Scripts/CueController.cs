@@ -4,23 +4,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.MixedReality.Toolkit.Utilities;
+using UnityEngine.XR.WSA.Input;
+using Microsoft.MixedReality.Toolkit;
+using UnityEngine.XR;
+using System;
 
 public class CueController : MonoBehaviour
 {
-    public Vector3 initPos;
-    public float threshold = 0.5f;
+    #region Public Variables
+    private float shotThreshold = 0.000005f;
+    private float distanceOffset = 0.001f;
+    private float forceMultiplier = 50000000f;
 
+    #endregion
+
+    #region Private Variables
     private const float PinchThreshold = 0.1f;
     private bool shooting;
     private bool finishShot;
     private bool shotStopped;
     private float charge;
+    private Vector3 initPos;
     private GameObject buttonController;
+    private Rigidbody cueRigidbody;
+    private Quaternion shootAngle;
+    private float shootLocalZPos;
+    private float cueLocalY;
+    //private var hand = new IMixedRealityHand;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         buttonController = GameObject.FindGameObjectWithTag("buttoncontroller");
+        cueRigidbody = gameObject.GetComponent<Rigidbody>();
         shooting = false;
         finishShot = false;
         shotStopped = false;
@@ -29,15 +47,24 @@ public class CueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shooting)
+
+        //gameObject.GetComponent<Transform>().position = new Vector3(gameObject.GetComponent<Transform>().position.x ,-4.79f, gameObject.GetComponent<Transform>().position.z);
+        //gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, cueLocalY, gameObject.transform.localPosition.z);
+        if (shooting) // Propel the cue forwards after it is released
         {
-            charge = System.Math.Abs(initPos.z - gameObject.transform.position.z);
-            if (charge > threshold)
+        
+            charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y);
+            if (charge > shotThreshold)
             {
+                Debug.Log("charge > shotThreshold");
                 if (!IsPinching(Handedness.Any))
                 {
-                    gameObject.GetComponent<Rigidbody>().AddForce(0, 0, charge * 100);
-                    Debug.Log(charge);
+                    shootAngle = gameObject.transform.localRotation;
+                    shootLocalZPos = gameObject.transform.localPosition.z;
+                    //cueRigidbody.AddRelativeForce(0, System.Math.Min(charge * forceMultiplier, 3000), 0);
+                    cueRigidbody.AddRelativeForce(0, 1500, 0);
+                    Debug.Log("Charge * forceMultiplier " + charge * forceMultiplier);
+                    cueRigidbody.freezeRotation = true;
                     shooting = false;
                     finishShot = true;
                     buttonController.GetComponent<ButtonController>().BreakAndShootPressed();
@@ -45,19 +72,34 @@ public class CueController : MonoBehaviour
             }
 
         }
-        if (finishShot)
+        else if (finishShot) // Stop the cue once it reaches a certain distance past its starting position
         {
-            if (gameObject.transform.position.z >= initPos.z + .1)
+            gameObject.transform.localRotation = shootAngle; // keep resetting
+      
+            
+            if (gameObject.transform.localPosition.y >= initPos.y + distanceOffset)
             {
                 Debug.Log("reached");
                 if (!shotStopped)
                 {
-                    gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    cueRigidbody.velocity = Vector3.zero;
+                    gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, initPos.y, gameObject.transform.localPosition.z);
                     shotStopped = true;
                     finishShot = false;
                 }
             }
+        } else // Stop the cue from drifting after letting go of it
+        {
+            if (IsPinching(Handedness.Any))
+            {
+                cueRigidbody.freezeRotation = false;
+            } else {
+                cueRigidbody.velocity = Vector3.zero;
+                cueRigidbody.angularVelocity = Vector3.zero;
+                cueRigidbody.freezeRotation = true;
+            }
         }
+
         if (shotStopped && !finishShot)
         {
             shotStopped = false;
@@ -77,8 +119,13 @@ public class CueController : MonoBehaviour
             shooting = shoot;
             return;
         }
-        initPos = gameObject.transform.position;
+        initPos = gameObject.transform.localPosition;
         shooting = shoot;
+    }
+
+    public float GetCharge()
+    {
+        return charge * forceMultiplier;
     }
 }
 

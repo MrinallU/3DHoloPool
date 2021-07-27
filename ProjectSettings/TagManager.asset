@@ -25,6 +25,7 @@ TagManager:
   - gamemenu
   - cue
   - buttoncontroller
+  - triangle
   layers:
   - Default
   - TransparentFX
