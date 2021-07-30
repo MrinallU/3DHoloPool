@@ -26,7 +26,9 @@ public class CueBallController : MonoBehaviour
         if (collider.gameObject.name == "Cue")
         {
             Debug.Log("Cue Detected");
-            //cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Vector3 pointOfCollision = collider.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+            gameObject.GetComponent<Rigidbody>().AddForceAtPosition(transform.forward * 5, pointOfCollision);
         }
         Debug.Log("Collision Detected");
     }

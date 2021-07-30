@@ -26,6 +26,7 @@ TagManager:
   - cue
   - buttoncontroller
   - triangle
+  - border
   layers:
   - Default
   - TransparentFX

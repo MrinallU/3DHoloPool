@@ -87,4 +87,17 @@ public class ButtonController : MonoBehaviour
     {
         instructions.SetActive(!instructions.activeInHierarchy);
     }
+
+    public void ResetCuePressed()
+    {
+        if (breakAndShootBool)
+        {
+            BreakAndShootPressed();
+        }
+        cue.transform.localPosition = new Vector3(-28.9f, -4.8f, -26.7f);
+        //cue.GetComponent<Rigidbody>().freezeRotation = false;
+        cue.transform.localRotation = cue.GetComponent<CueController>().GetStartRotation();
+        cue.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        cue.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
 }

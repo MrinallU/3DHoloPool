@@ -12,8 +12,9 @@ using System;
 public class CueController : MonoBehaviour
 {
     #region Public Variables
+
     private float shotThreshold = 0.000005f;
-    private float distanceOffset = 0.001f;
+    private float distanceOffset = 0.01f;
     private float forceMultiplier = 50000000f;
 
     #endregion
@@ -28,8 +29,12 @@ public class CueController : MonoBehaviour
     private GameObject buttonController;
     private Rigidbody cueRigidbody;
     private Quaternion shootAngle;
+    private Quaternion startRotation;
     private float shootLocalZPos;
     private float cueLocalY;
+    private GameObject[] borders;
+    private GameObject[] balls;
+    private GameObject poolTable; 
     //private var hand = new IMixedRealityHand;
 
     #endregion
@@ -37,11 +42,29 @@ public class CueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startRotation = gameObject.transform.localRotation;
+
         buttonController = GameObject.FindGameObjectWithTag("buttoncontroller");
         cueRigidbody = gameObject.GetComponent<Rigidbody>();
         shooting = false;
         finishShot = false;
         shotStopped = false;
+
+        borders = GameObject.FindGameObjectsWithTag("border");
+        poolTable = GameObject.FindGameObjectWithTag("table");
+        balls = GameObject.FindGameObjectsWithTag("ball");
+
+        foreach (GameObject currBorder in borders)
+        {
+            Physics.IgnoreCollision(currBorder.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        }
+
+        foreach (GameObject currBall in balls)
+        {
+            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        } 
+
+        Physics.IgnoreCollision(poolTable.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -53,7 +76,8 @@ public class CueController : MonoBehaviour
         if (shooting) // Propel the cue forwards after it is released
         {
         
-            charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y);
+            charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y); 
+           // Debug.Log("charge: " + charge + ", initPos.y: " + initPos.y);
             if (charge > shotThreshold)
             {
                 Debug.Log("charge > shotThreshold");
@@ -62,28 +86,35 @@ public class CueController : MonoBehaviour
                     shootAngle = gameObject.transform.localRotation;
                     shootLocalZPos = gameObject.transform.localPosition.z;
                     //cueRigidbody.AddRelativeForce(0, System.Math.Min(charge * forceMultiplier, 3000), 0);
-                    cueRigidbody.AddRelativeForce(0, 1500, 0);
+                  
                     Debug.Log("Charge * forceMultiplier " + charge * forceMultiplier);
+                    cueRigidbody.AddRelativeForce(0, 500, 0);
                     cueRigidbody.freezeRotation = true;
                     shooting = false;
                     finishShot = true;
                     buttonController.GetComponent<ButtonController>().BreakAndShootPressed();
+                    // calculate timer duration 
+                    // start timer
+                   
                 }
             }
 
         }
         else if (finishShot) // Stop the cue once it reaches a certain distance past its starting position
         {
-            gameObject.transform.localRotation = shootAngle; // keep resetting
-      
-            
+            //gameObject.transform.localRotation = shootAngle; // keep resetting
+
+            Debug.Log("localPos: " + Math.Abs(gameObject.transform.localPosition.y) + ", initPos.y + distanceOffset: " + Math.Abs(initPos.y - distanceOffset));
+            // if timer expires
             if (gameObject.transform.localPosition.y >= initPos.y + distanceOffset)
             {
                 Debug.Log("reached");
                 if (!shotStopped)
                 {
+                    // reset timer
+
                     cueRigidbody.velocity = Vector3.zero;
-                    gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, initPos.y, gameObject.transform.localPosition.z);
+                    //gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, initPos.y, gameObject.transform.localPosition.z);
                     shotStopped = true;
                     finishShot = false;
                 }
@@ -112,6 +143,7 @@ public class CueController : MonoBehaviour
     }
 
 
+
     public void HandleShooting(bool shoot)
     {
         if (!shoot)
@@ -126,6 +158,11 @@ public class CueController : MonoBehaviour
     public float GetCharge()
     {
         return charge * forceMultiplier;
+    }
+
+    public Quaternion GetStartRotation()
+    {
+        return startRotation;
     }
 }
 
