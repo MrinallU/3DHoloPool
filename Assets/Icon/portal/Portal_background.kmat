@@ -1,0 +1,14 @@
+{
+  "global": {
+    "albedo": "Icon/Portal/Portal_background_256.png",
+    "blendmode": "Transparent"
+  },
+  "materials": [
+    {
+      "shaderName": "UnlitTextured",
+      "name": "Portal_background",
+      "blendmode": "Transparent",
+      "albedo": "Icon/Portal/Portal_background_256.png"
+    }
+  ]
+}

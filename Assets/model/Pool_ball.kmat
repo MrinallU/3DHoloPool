@@ -1,0 +1,12 @@
+{
+  "global": {
+    "albedo": "Icon/Model/Pool_ball_256.png"
+  },
+  "materials": [
+    {
+      "shaderName": "UnlitTextured",
+      "name": "Pool_ball",
+      "albedo": "Icon/Model/Pool_ball_256.png"
+    }
+  ]
+}
