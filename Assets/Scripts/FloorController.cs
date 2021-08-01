@@ -75,6 +75,12 @@ public class FloorController : MonoBehaviour
 
     void initBallType(string bt)
     {
+        if(bt == "eightBall")
+        {
+            gameStatus = "lost"; 
+            return; 
+        }
+
         playerBallType = bt;
     }
 }
