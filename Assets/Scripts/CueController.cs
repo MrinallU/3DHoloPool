@@ -13,13 +13,12 @@ public class CueController : MonoBehaviour
 {
     #region Public Variables
 
-    private float shotThreshold = 0.000005f;
-    private float distanceOffset = 0.01f;
-    private float forceMultiplier = 50000000f;
-
     #endregion
 
     #region Private Variables
+    private float shotThreshold = 0.000005f;
+    private float distanceOffset = 0.01f;
+    private float forceMultiplier = 50000000f;
     private const float PinchThreshold = 0.1f;
     private bool shooting;
     private bool finishShot;
@@ -27,13 +26,17 @@ public class CueController : MonoBehaviour
     private float charge;
     private Vector3 initPos;
     private GameObject buttonController;
+    private GameObject cueBall;
+    private Collider cueBallCollider;
+    private Collider cueCollider;
     private Rigidbody cueRigidbody;
     private Quaternion shootAngle;
     private Quaternion startRotation;
     private float shootLocalZPos;
     private float cueLocalY;
     private GameObject[] borders;
-    private GameObject[] balls;
+    private GameObject[] stripes;
+    private GameObject[] solids;
     private GameObject poolTable; 
     //private var hand = new IMixedRealityHand;
 
@@ -50,21 +53,33 @@ public class CueController : MonoBehaviour
         finishShot = false;
         shotStopped = false;
 
+        cueBall = GameObject.FindGameObjectWithTag("cueBall");
+        cueBallCollider = cueBall.GetComponent<Collider>();
+        cueCollider = gameObject.GetComponent<Collider>();
         borders = GameObject.FindGameObjectsWithTag("border");
         poolTable = GameObject.FindGameObjectWithTag("table");
-        balls = GameObject.FindGameObjectsWithTag("ball");
+        stripes = GameObject.FindGameObjectsWithTag("stripe");
+        solids = GameObject.FindGameObjectsWithTag("solid");
 
+        Physics.IgnoreCollision(cueBallCollider, cueCollider);
+
+        Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("eightBall").GetComponent<Collider>(), cueCollider);
         foreach (GameObject currBorder in borders)
         {
-            Physics.IgnoreCollision(currBorder.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+            Physics.IgnoreCollision(currBorder.GetComponent<Collider>(), cueCollider);
         }
 
-        foreach (GameObject currBall in balls)
+        foreach (GameObject currBall in stripes)
         {
-            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
-        } 
+            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), cueCollider);
+        }
 
-        Physics.IgnoreCollision(poolTable.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        foreach (GameObject currBall in solids)
+        {
+            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), cueCollider);
+        }
+
+        Physics.IgnoreCollision(poolTable.GetComponent<Collider>(), cueCollider);
     }
 
     // Update is called once per frame
@@ -75,7 +90,7 @@ public class CueController : MonoBehaviour
         //gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, cueLocalY, gameObject.transform.localPosition.z);
         if (shooting) // Propel the cue forwards after it is released
         {
-        
+            Physics.IgnoreCollision(cueBallCollider, cueCollider, false);
             charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y); 
            // Debug.Log("charge: " + charge + ", initPos.y: " + initPos.y);
             if (charge > shotThreshold)
@@ -88,7 +103,7 @@ public class CueController : MonoBehaviour
                     //cueRigidbody.AddRelativeForce(0, System.Math.Min(charge * forceMultiplier, 3000), 0);
                   
                     Debug.Log("Charge * forceMultiplier " + charge * forceMultiplier);
-                    cueRigidbody.AddRelativeForce(0, 500, 0);
+                    cueRigidbody.AddRelativeForce(0, 750, 0);
                     cueRigidbody.freezeRotation = true;
                     shooting = false;
                     finishShot = true;
@@ -119,8 +134,9 @@ public class CueController : MonoBehaviour
                     finishShot = false;
                 }
             }
-        } else // Stop the cue from drifting after letting go of it
+        } else // Stop the cue from drifting after letting go of it (not when shooting)
         {
+            Physics.IgnoreCollision(cueBallCollider, cueCollider, true);
             if (IsPinching(Handedness.Any))
             {
                 cueRigidbody.freezeRotation = false;
