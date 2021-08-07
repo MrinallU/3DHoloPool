@@ -27,6 +27,12 @@ TagManager:
   - buttoncontroller
   - triangle
   - border
+  - stripe
+  - solid
+  - eightBall
+  - cueBall
+  - scoreText
+  - scoreBoard
   layers:
   - Default
   - TransparentFX

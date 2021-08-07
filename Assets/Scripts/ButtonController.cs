@@ -59,6 +59,12 @@ public class ButtonController : MonoBehaviour
         Application.Quit();
     }
 
+    public void ExitGamePressed()
+    {
+        SceneManager.UnloadSceneAsync("Game");
+        SceneManager.LoadScene("Start", LoadSceneMode.Additive);
+    }
+
     public void BreakAndShootPressed()
     {
 
