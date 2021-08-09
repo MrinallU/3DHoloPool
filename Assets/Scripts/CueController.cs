@@ -16,140 +16,137 @@ public class CueController : MonoBehaviour
     #endregion
 
     #region Private Variables
+
+    private bool shooting;
+    private bool finishShot;
+    private bool cueBallContact;
+    private float charge;
+    private float cueLocalY;
     private float shotThreshold = 0.000005f;
     private float distanceOffset = 0.01f;
     private float forceMultiplier = 50000000f;
+    private float timeCounter;
+    private const float shotResetStep = .5f;
+    private const float shotTime = 0.2f;
     private const float PinchThreshold = 0.1f;
-    private bool shooting;
-    private bool finishShot;
-    private bool shotStopped;
-    private float charge;
     private Vector3 initPos;
-    private GameObject buttonController;
-    private GameObject cueBall;
-    private Collider cueBallCollider;
-    private Collider cueCollider;
-    private Rigidbody cueRigidbody;
     private Quaternion shootAngle;
     private Quaternion startRotation;
-    private float shootLocalZPos;
-    private float cueLocalY;
+    private Rigidbody cueRigidbody;
+    private Collider cueBallCollider;
+    private Collider cueCollider;
+    private Collider poolTableCollider;
+    private GameObject buttonController;
     private GameObject[] borders;
     private GameObject[] stripes;
     private GameObject[] solids;
-    private GameObject poolTable; 
-    //private var hand = new IMixedRealityHand;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        startRotation = gameObject.transform.localRotation;
-
         buttonController = GameObject.FindGameObjectWithTag("buttoncontroller");
-        cueRigidbody = gameObject.GetComponent<Rigidbody>();
-        shooting = false;
-        finishShot = false;
-        shotStopped = false;
 
-        cueBall = GameObject.FindGameObjectWithTag("cueBall");
-        cueBallCollider = cueBall.GetComponent<Collider>();
-        cueCollider = gameObject.GetComponent<Collider>();
         borders = GameObject.FindGameObjectsWithTag("border");
-        poolTable = GameObject.FindGameObjectWithTag("table");
         stripes = GameObject.FindGameObjectsWithTag("stripe");
         solids = GameObject.FindGameObjectsWithTag("solid");
 
-        Physics.IgnoreCollision(cueBallCollider, cueCollider);
+        cueRigidbody = gameObject.GetComponent<Rigidbody>();
 
-        Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("eightBall").GetComponent<Collider>(), cueCollider);
-        foreach (GameObject currBorder in borders)
-        {
-            Physics.IgnoreCollision(currBorder.GetComponent<Collider>(), cueCollider);
-        }
+        cueBallCollider = GameObject.FindGameObjectWithTag("cueBall").GetComponent<Collider>();
+        cueCollider = gameObject.GetComponent<Collider>();
+        poolTableCollider = GameObject.FindGameObjectWithTag("table").GetComponent<Collider>();
 
-        foreach (GameObject currBall in stripes)
-        {
-            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), cueCollider);
-        }
+        startRotation = gameObject.transform.localRotation;
 
-        foreach (GameObject currBall in solids)
-        {
-            Physics.IgnoreCollision(currBall.GetComponent<Collider>(), cueCollider);
-        }
+        shooting = false;
+        finishShot = false;
+        cueBallContact = false;
 
-        Physics.IgnoreCollision(poolTable.GetComponent<Collider>(), cueCollider);
+        SetIgnoreCollision(cueBallCollider, true);
+        SetIgnoreCollision(GameObject.FindGameObjectWithTag("eightBall").GetComponent<Collider>(), true);
+        SetIgnoreCollision(poolTableCollider, true);
+
+        SetIgnoreCollisions(borders, true);
+        SetIgnoreCollisions(stripes, true);
+        SetIgnoreCollisions(solids, true);
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //gameObject.GetComponent<Transform>().position = new Vector3(gameObject.GetComponent<Transform>().position.x ,-4.79f, gameObject.GetComponent<Transform>().position.z);
-        //gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, cueLocalY, gameObject.transform.localPosition.z);
-        if (shooting) // Propel the cue forwards after it is released
+        if (shooting) 
         {
-            Physics.IgnoreCollision(cueBallCollider, cueCollider, false);
-            charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y); 
-           // Debug.Log("charge: " + charge + ", initPos.y: " + initPos.y);
+            Shoot();
+        }
+        else
+        {
+            NotShooting();
+        }
+
+    }
+
+    public void Shoot() // Propel the cue forwards after it is released
+    {
+        if (finishShot)
+        {
+            FinishShot();
+        } 
+        else
+        {
+            SetIgnoreCollision(cueBallCollider, false);
+            charge = System.Math.Abs(initPos.y - gameObject.transform.localPosition.y);
             if (charge > shotThreshold)
             {
-                Debug.Log("charge > shotThreshold");
                 if (!IsPinching(Handedness.Any))
                 {
-                    shootAngle = gameObject.transform.localRotation;
-                    shootLocalZPos = gameObject.transform.localPosition.z;
-                    //cueRigidbody.AddRelativeForce(0, System.Math.Min(charge * forceMultiplier, 3000), 0);
-                  
-                    Debug.Log("Charge * forceMultiplier " + charge * forceMultiplier);
-                    cueRigidbody.AddRelativeForce(0, 750, 0);
+                    cueBallContact = false;
+                    shootAngle = gameObject.transform.localRotation; 
+                    cueRigidbody.AddRelativeForce(0, 1500, 0);
                     cueRigidbody.freezeRotation = true;
-                    shooting = false;
+                    timeCounter = 0;
                     finishShot = true;
-                    buttonController.GetComponent<ButtonController>().BreakAndShootPressed();
-                    // calculate timer duration 
-                    // start timer
-                   
                 }
             }
-
         }
-        else if (finishShot) // Stop the cue once it reaches a certain distance past its starting position
+    }
+
+    public void FinishShot() // Stop the cue after a certain amount of time has passed
+    { 
+        timeCounter += Time.deltaTime;
+        if (timeCounter >= shotTime || cueBallContact == true)
         {
-            //gameObject.transform.localRotation = shootAngle; // keep resetting
-
-            Debug.Log("localPos: " + Math.Abs(gameObject.transform.localPosition.y) + ", initPos.y + distanceOffset: " + Math.Abs(initPos.y - distanceOffset));
-            // if timer expires
-            if (gameObject.transform.localPosition.y >= initPos.y + distanceOffset)
+            Debug.Log("Shot Finished");
+            cueRigidbody.velocity = Vector3.zero;
+            cueRigidbody.angularVelocity = Vector3.zero;
+            if (transform.localPosition != initPos) // Gradually move the cue back to its initial shooting position
             {
-                Debug.Log("reached");
-                if (!shotStopped)
-                {
-                    // reset timer
-
-                    cueRigidbody.velocity = Vector3.zero;
-                    //gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, initPos.y, gameObject.transform.localPosition.z);
-                    shotStopped = true;
-                    finishShot = false;
-                }
+                transform.localPosition = Vector3.MoveTowards(transform.localPosition, initPos, shotResetStep);
             }
-        } else // Stop the cue from drifting after letting go of it (not when shooting)
-        {
-            Physics.IgnoreCollision(cueBallCollider, cueCollider, true);
-            if (IsPinching(Handedness.Any))
+            else
             {
-                cueRigidbody.freezeRotation = false;
-            } else {
-                cueRigidbody.velocity = Vector3.zero;
-                cueRigidbody.angularVelocity = Vector3.zero;
-                cueRigidbody.freezeRotation = true;
+                finishShot = false;
+                cueBallContact = false;
+                buttonController.GetComponent<ButtonController>().BreakAndShootPressed(); // Deactivate shoot mode
             }
         }
+    }
 
-        if (shotStopped && !finishShot)
+    public void NotShooting()
+    {
+        SetIgnoreCollision(cueBallCollider, true); // Only ignores the cue ball's trigger collider
+        if (IsPinching(Handedness.Any))
         {
-            shotStopped = false;
+            cueRigidbody.freezeRotation = false;
+        }
+        else
+        {
+            cueRigidbody.velocity = Vector3.zero;
+            cueRigidbody.angularVelocity = Vector3.zero;
+            cueRigidbody.freezeRotation = true;
         }
     }
 
@@ -158,9 +155,7 @@ public class CueController : MonoBehaviour
         return HandPoseUtils.CalculateIndexPinch(trackedHand) > PinchThreshold;
     }
 
-
-
-    public void HandleShooting(bool shoot)
+    public void InitiateShooting(bool shoot)
     {
         if (!shoot)
         {
@@ -176,9 +171,27 @@ public class CueController : MonoBehaviour
         return charge * forceMultiplier;
     }
 
+    public void SetCueBallContact(bool b)
+    {
+        cueBallContact = b;
+    }
+
     public Quaternion GetStartRotation()
     {
         return startRotation;
+    }
+
+    public void SetIgnoreCollisions(GameObject[] collisionObjects, bool b)
+    {
+        foreach (GameObject currObject in collisionObjects)
+        {
+            Physics.IgnoreCollision(currObject.GetComponent<Collider>(), cueCollider, b);
+        }
+    }
+
+    public void SetIgnoreCollision(Collider someCollider, bool b)
+    {
+        Physics.IgnoreCollision(someCollider, cueCollider, b);
     }
 }
 

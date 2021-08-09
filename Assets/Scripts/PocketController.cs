@@ -63,6 +63,12 @@ public class PocketController : MonoBehaviour
 
     void updateScore(string bt)
     {
+        // prevent cue from being set as player ball type
+        if (bt == "cue")
+        {
+            return;
+        }
+
         // cue ball gets pocketted
         if(bt == "cueBall")
         {

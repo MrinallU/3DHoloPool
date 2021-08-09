@@ -71,9 +71,8 @@ public class ButtonController : MonoBehaviour
         breakAndShootBool = !breakAndShootBool;
         triangle.GetComponent<Triangle>().RemoveTriangle();
         cue.GetComponent<MoveAxisConstraintShootMode>().enabled = breakAndShootBool;
-        //cue.GetComponent<FixedRotationToUserConstraint>().enabled = breakAndShootBool;
         cue.GetComponent<MoveAxisConstraint>().enabled = !breakAndShootBool;
-        cue.GetComponent<CueController>().HandleShooting(breakAndShootBool);
+        cue.GetComponent<CueController>().InitiateShooting(breakAndShootBool);
     }
 
     public void AdjustTablePressed()
